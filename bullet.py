@@ -9,14 +9,20 @@ class Bullet(Sprite):
         self.screen = screen
 
         # draw a bullet at (0, 0) and remove it to the position of the ship
+        """
         self.rect = pygame.Rect(0, 0, ai_settings.bullet_width, ai_settings.bullet_height)
+        self.rect.centerx = ship.rect.centerx
+        self.rect.top = ship.rect.top
+        """
+        self.image = pygame.image.load('images/plane/bullet1.png')
+        self.rect = self.image.get_rect()
         self.rect.centerx = ship.rect.centerx
         self.rect.top = ship.rect.top
 
         # position of a bullet
         self.y = float(self.rect.y)
 
-        self.color = ai_settings.bullet_color
+        # self.color = ai_settings.bullet_color
         self.speed_factor = ai_settings.bullet_speed_factor
 
     def update(self):
@@ -24,4 +30,5 @@ class Bullet(Sprite):
             self.rect.y = self.y
 
     def draw_bullet(self):
-            pygame.draw.rect(self.screen, self.color, self.rect)
+        self.screen.blit(self.image, self.rect)
+        # pygame.draw.rect(self.screen, self.color, self.rect)

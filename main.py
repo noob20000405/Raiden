@@ -30,6 +30,9 @@ def run_game():
     # create the fleet
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
+    # animation
+    animation = 0
+
     # main loop
     while True:
 
@@ -44,6 +47,9 @@ def run_game():
             gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
 
         # refresh the screen
-        gf.update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button)
+        gf.update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button, animation)
+
+        animation += 1
+        animation %= 5
 
 run_game()

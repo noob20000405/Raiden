@@ -55,7 +55,7 @@ def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bul
         create_fleet(ai_settings, screen, ship, aliens)
         ship.center_ship()
 
-def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button, animation):
     """refresh the screen"""
     # draw the screen and the ship, bullets
     screen.fill(ai_settings.bg_color)
@@ -65,6 +65,8 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
     aliens.draw(screen)
     if not stats.game_active:
         play_button.draw_button()
+    if animation != 0:
+        ship.screen.blit(ship.image_energy, ship.energy_rect)
     # refresh the screen
     pygame.display.flip()
 
