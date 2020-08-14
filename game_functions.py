@@ -58,7 +58,11 @@ def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bul
 def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button, animation):
     """refresh the screen"""
     # draw the screen and the ship, bullets
-    screen.fill(ai_settings.bg_color)
+    # screen.fill(ai_settings.bg_color)
+    image = pygame.image.load('images/bg/bg2.jpg')
+    rect = image.get_rect()
+    screen.blit(image, rect)
+
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
