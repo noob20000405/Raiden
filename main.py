@@ -54,10 +54,10 @@ def run_game():
             # reposition the ship
             ship.update()
 
-            gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
+            gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets, enemy1s)
             gf.update_aliens(ai_settings, stats, screen, sb, ship, aliens, bullets)
 
-            ce.update_enemy1(enemy1s)
+            ce.update_enemy1(ai_settings, stats, screen, sb, ship, aliens, bullets, enemy1s)
 
         # refresh the screen
         gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button, animation, enemy1s)

@@ -3,6 +3,7 @@ import random
 import pygame
 
 from enemy import Enemy1
+import game_functions as gf
 
 def get_number_enemy1_x(ai_settings, enemy1_width):
     available_space_x = ai_settings.screen_width
@@ -28,8 +29,11 @@ def create_fleet_e1(ai_settings, screen, enemy1s):
         if create == 1:
             create_enemy1(ai_settings, screen, enemy1s, enemy1_number)
 
-def update_enemy1(enemey1s):
-    enemey1s.update()
+def update_enemy1(ai_settings, stats, screen, sb, ship, aliens, bullets, enemy1s):
+    enemy1s.update()
+
+    if pygame.sprite.spritecollideany(ship, enemy1s):
+        gf.ship_hit(ai_settings, stats, screen, sb, ship, aliens, bullets)
 
 def check_e1_bottom(screen, enemy1s):
     screen_rect = screen.get_rect()
